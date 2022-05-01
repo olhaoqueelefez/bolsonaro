@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import Card from '../components/card'
 import Layout from '../components/layout'
+import { category_box } from './index.module.css'
 
 // Query to get categories and cards
 export const query = graphql`
@@ -97,9 +98,9 @@ const IndexPage = ({ data }: queryResultsType) => {
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">Olha o que ele fez</h1>
-            <p className="lead text-muted">Escolha uma categoria pra filtrar os feitos de Bolsonaro</p>
-            <p>
+            <h1 className="fw-light">O que Bolsonaro fez</h1>
+            <p className="lead text-muted">Escolha uma categoria</p>
+            <div className={category_box}>
               {getOrderedCategories().map(category => {
                 const { frontmatter } = category;
 
@@ -110,10 +111,10 @@ const IndexPage = ({ data }: queryResultsType) => {
                 };
 
                 return (
-                  <a id={category.id} href="#" className="btn my-2" style={style} onClick={() => (setCategory(category))}>{frontmatter.title}</a>
+                  <button id={category.id} className="btn my-2" style={style} onClick={() => (setCategory(category))}>{frontmatter.title}</button>
                 );
               })}
-            </p>
+            </div>
           </div>
         </div>
       </section>
