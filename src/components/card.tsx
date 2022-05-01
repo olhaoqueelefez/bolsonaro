@@ -11,16 +11,17 @@ interface CardProps {
 
 interface CardModalProps {
     body: string,
-    id: string
+    id: string,
+    title: string
 }
 
-const CardModal = ({ id, body }: CardModalProps) => {
+const CardModal = ({ id, body, title }: CardModalProps) => {
     return (
         <div className="modal fade" id={id} tabIndex={-1} aria-labelledby={`Label${id}`} aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id={`Label${id}`}>Modal {id}</h5>
+                        <h5 className="modal-title" id={`Label${id}`}>{title}</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -29,7 +30,7 @@ const CardModal = ({ id, body }: CardModalProps) => {
                         </MDXRenderer>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,7 @@ const CardModal = ({ id, body }: CardModalProps) => {
 const Card = ({ id, title, body, date }: CardProps) => {
     return (
         <>
-            <CardModal id={`Modal${id}`} body={body }/>
+            <CardModal id={`Modal${id}`} body={body} title={title} />
             <div className="col">
                 <div className="card shadow-sm">
                     <div className="card-body">
